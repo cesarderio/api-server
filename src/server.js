@@ -13,6 +13,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(customRouter);
+// app.use('/custom', customRouter);
 
 app.get('/', (req, res, next) => {
   res.status(200).send('Hello World!');
