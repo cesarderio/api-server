@@ -1,37 +1,66 @@
-# package.json Notes:
+# Lab Class 03
 
-## For React Applications
+## Project: Basic-API-server
 
- To deploy your application at GitHub pages, you'll need to add a home page property to your package.json which points to the deployed base URL of your GitHub Pages site.
- 
- *NOTE: This will break deployments to other hosting services such as Netlify, Vercel, or AWS Amplify, so if you later wish to deploy there, remove this property completely*
- 
-     {
-       "homepage": "https://yourname.github.io/repository-name"
-     }
+Create a basic api server.
+Dynamic API Phase 2: Perform CRUD Operations on a database.
 
-## Node / Express Applications
+### Author: Raphael Chookagian
 
-### For Tests
-Your Scripts section should have the following, so that you can easily run tests locally and in your CI
+### Problem Domain
 
-  "scripts": {
-    "start": "node index.js",
-    "lint": "eslint **/*.js",
-    "test": "jest --verbose --coverage",
-    "test-watch": "jest --watchAll --verbose --coverage"
-},
+Build a REST API using Express, by creating a proper series of endpoints that perform CRUD operations on a database, using the REST standard
 
+Dynamic API Phase 2: Perform CRUD Operations on a database.
 
-### For NPM Modules
+### Links and Resources
 
-If you are creating a module to deploy at NPM, you'll want a "bin" section that identifies the name of the global command to run and your .js file that runs when called.
+- [ci,cd](https://github.com/cesarderio/class3)
+- [prod deployment](https://basic-express-server-tg63.onrender.com)
+<!-- - [dev deployment](https://server-dev-6rxb.onrender.com/) -->
 
-"bin": {
-    "fetch": "index.js"
-}
+### Setup
 
-Additionally, that file should have as it's first line, so that it'll run without having to type "node filename.js" every time
+### `.env` requirements
 
-#!/usr/bin/env node
+see `.env.sample`
 
+i.e.
+
+- `PORT`
+- `DATABASE_URL` - URL to the running Postgres instance/db
+
+#### How to initialize/run your application (where applicable)
+
+- nodemon
+
+#### Features / Routes
+
+- Feature One: Details of feature
+- GET : `/` - specific route to hit
+- GET : `/person` - specific route to hit
+- GET : `bad` - specific route to hit
+
+#### Tests
+
+- How do you run tests?
+  - npm test
+- Any tests of note?
+  - validator
+  - logger
+  - handles root path
+  - handles errors
+  handles invalid requests
+
+### Whiteboard
+
+#### UML
+
+Link to an image of the UML for your application and response to events
+
+![UML](./assets/UML.png)
+
+## Terminology
+
+- Query Parameter: `/person?name=Raphael`
+- Path (URL) Parameter: `/person/name`
