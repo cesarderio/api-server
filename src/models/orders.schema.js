@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = (sequelizeDatabase, DataTypes) => sequelizeDatabase.define('oders', {
+module.exports = (sequelizeDatabase, DataTypes) => sequelizeDatabase.define('orders', {
   productName: {
     type: DataTypes.STRING,
     allowNull: false,

@@ -33,11 +33,11 @@ const CustomerModel = customersSchema(sequelizeDatabase, DataTypes);
 // create a people model with our schema
 const PeopleModel = peopleSchema(sequelizeDatabase, DataTypes);
 // create a orders model with our schema
-const OrdersModel = ordersSchema(sequelizeDatabase, DataTypes);
+const OrderModel = ordersSchema(sequelizeDatabase, DataTypes);
 
 module.exports = {
   sequelizeDatabase,
   CustomerModel,
   PeopleModel,
-  OrdersModel,
+  OrderModel,
 };

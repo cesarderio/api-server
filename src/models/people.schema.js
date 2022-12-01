@@ -14,12 +14,12 @@ module.exports = (sequelizeDatabase, DataTypes) => sequelizeDatabase.define('peo
     values: ['they/them', 'she/her', 'he/him'],
     allowNull: true,
   },
-  phone: {
-    type: DataTypes.INTEGER || DataTypes.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+  // phone: {
+  //   type: DataTypes.INTEGER || DataTypes.STRING,
+  //   allowNull: false,
+  // },
+  // email: {
+  //   type: DataTypes.STRING,
+  //   allowNull: false,
+  // },
 });
