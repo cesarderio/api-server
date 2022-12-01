@@ -38,7 +38,7 @@ i.e.
 
 - Feature One: Details of feature
 - GET : `/` - specific route to hit
-- GET : `/person` - specific route to hit
+- GET : `/customers` - specific route to hit
 - GET : `bad` - specific route to hit
 
 #### Tests
@@ -56,11 +56,10 @@ i.e.
 
 #### UML
 
-Link to an image of the UML for your application and response to events
-
-![UML](./assets/UML.png)
+![UML](./assets/uml.png)
 
 ## Terminology
 
 - Query Parameter: `/person?name=Raphael`
 - Path (URL) Parameter: `/person/name`
+-

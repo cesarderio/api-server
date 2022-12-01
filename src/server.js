@@ -5,14 +5,17 @@ const express = require('express');
 const cors = require('cors');
 const notFound = require('./error-handlers/404');
 const errorHandler = require('./error-handlers/500');
-// const { CustomerModel } = require('./models');
 const PORT = process.env.PORT || 3002;
-const customRouter = require('./routes/customers');
+const customerRouter = require('./routes/customers');
+const peopleRouter = require('./routes/people');
+const ordersRouter = require('./routes/orders');
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(customRouter);
+app.use(customerRouter);
+app.use(peopleRouter);
+app.use(ordersRouter);
 // app.use('/custom', customRouter);
 
 app.get('/', (req, res, next) => {

@@ -3,6 +3,8 @@
 require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
 const customersSchema = require('./customers.schema');
+const peopleSchema = require('./people.schema');
+const ordersSchema = require('./orders.schema');
 
 // 'postgres://localhost:5432/api-app'
 // 'postgres://username:password@localhost:5432/api-app' <-- if you have a username and password
@@ -28,8 +30,14 @@ const sequelizeDatabase = new Sequelize(DATABASE_URL, {
 
 // create a customer model with our schema
 const CustomerModel = customersSchema(sequelizeDatabase, DataTypes);
+// create a people model with our schema
+const PeopleModel = peopleSchema(sequelizeDatabase, DataTypes);
+// create a orders model with our schema
+const OrdersModel = ordersSchema(sequelizeDatabase, DataTypes);
 
 module.exports = {
   sequelizeDatabase,
   CustomerModel,
+  PeopleModel,
+  OrdersModel,
 };

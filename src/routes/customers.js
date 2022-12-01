@@ -2,7 +2,7 @@
 
 const express = require('express');
 
-const { CustomerModel } = require('../models');
+const { CustomerModel } = require('../models/index');
 
 const router = express.Router();
 
@@ -12,7 +12,7 @@ router.get('/customer', async (req, res, next) => {
   try {
     const customers = await CustomerModel.findAll();
     res.status(200).send(customers);
-  } catch (e) {
+  } catch(e) {
     next(e);
   }
 });
@@ -22,7 +22,7 @@ router.post('/customer', async (req, res, next) => {
     const newCustomer = await CustomerModel.create(req.body);
     res.status(200).send(newCustomer);
 
-  } catch (e) {
+  } catch(e) {
     next(e);
   }
 });
