@@ -6,6 +6,8 @@ const customersSchema = require('./customers.schema');
 const peopleSchema = require('./people.schema');
 const ordersSchema = require('./orders.schema');
 
+const ModelInterface = require('./modelInterface');
+
 // 'postgres://localhost:5432/api-app'
 // 'postgres://username:password@localhost:5432/api-app' <-- if you have a username and password
 // will use ternary here to set up sqlite for testing
@@ -31,6 +33,8 @@ const OrderModel = ordersSchema(sequelizeDatabase, DataTypes);
 module.exports = {
   sequelizeDatabase,
   CustomerModel,
+  customerInterface: new ModelInterface(CustomerModel),
+  // orderInterface: new ModelInterface(OrderModel),
   PeopleModel,
   OrderModel,
 };
