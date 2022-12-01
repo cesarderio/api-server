@@ -41,14 +41,14 @@ describe('REST API', () => {
     expect(response.body[0].pronouns).toEqual('they/them');
   });
 
-  test('finds a customer by id', async () => {
-    let response = await request.get('/customer/:id');
+  // test('finds a customer by id', async () => {
+  //   let response = await request.get('/customer/:id');
 
-    expect(response.status).toEqual(200);
-    expect(response.body[0].name).toEqual('tester');
-    expect(response.body[0].age).toEqual(42);
-    expect(response.body[0].pronouns).toEqual('they/them');
-  });
+  //   expect(response.status).toEqual(200);
+  //   expect(response.body[0].name).toEqual('tester');
+  //   expect(response.body[0].age).toEqual(42);
+  //   expect(response.body[0].pronouns).toEqual('they/them');
+  // });
 
   // test('updates a customer by id', async () => {
   //   let response = await request.update('/customer/:id');
