@@ -16,10 +16,10 @@ app.use(express.json());
 app.use(customerRouter);
 app.use(peopleRouter);
 app.use(ordersRouter);
-// app.use('/custom', customRouter);
+// app.use('/routes/customers', customerRouter);
 
 app.get('/', (req, res, next) => {
-  res.status(200).send('Hello World!');
+  res.status(200).send('Hello World');
 });
 
 app.use('*', notFound);

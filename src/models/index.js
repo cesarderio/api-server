@@ -13,20 +13,13 @@ const ordersSchema = require('./orders.schema');
 // const DATABASE_URL = process.env.DATABASE_URL;
 
 const DATABASE_URL = process.env.NODE_ENV === 'test'
-  ? 'sqlite::memory'
+  ? 'sqlite:memory'
   : process.env.DATABASE_URL;
 
 
 
 // instantiate our sequelize connection to our database
-const sequelizeDatabase = new Sequelize(DATABASE_URL, {
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
-});
+const sequelizeDatabase = new Sequelize(DATABASE_URL);
 
 // create a customer model with our schema
 const CustomerModel = customersSchema(sequelizeDatabase, DataTypes);
