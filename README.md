@@ -1,6 +1,6 @@
-# Lab Class 03
+# Lab Class 04
 
-## Project: Basic-API-server
+## Project: API-server
 
 Create a basic api server.
 Dynamic API Phase 2: Perform CRUD Operations on a database.
