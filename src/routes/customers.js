@@ -1,12 +1,10 @@
 'use strict';
 
 const express = require('express');
-
-const { CustomerModel } = require('../models/index');
-const { customerInterface } = require('../models');
+const { CustomerModel } = require('../models');
+const { customerInterface, orderInterface, peopleInterface} = require('../models');
 
 const router = express.Router();
-
 
 router.get('/customer', async (req, res, next) => {
   // const users = await User.findAll();
@@ -27,7 +25,6 @@ router.get('/customer/:id', async (req, res, next) => {
   // const singleCustomer = await CustomerModel.findOne({where: {id}});
   res.status(200).send(singleCustomer);
 });
-
 // router.get('/customer/:id', async (req, res, next) => {
 //   try {
 //     const id = req.params.id;
@@ -38,6 +35,11 @@ router.get('/customer/:id', async (req, res, next) => {
 //   }
 // });
 //----------------------------------------------------------
+router.get('/customerWithOrders/:id', async (req, res, next) => {
+  const customerWithOrders = await customerInterface.readManyToOne(req.params.id, orderInterface.model);
+  res.status(200).send(customerWithOrders);
+});
+//--------------
 router.post('/customer', async (req, res, next) => {
   try {
     const newCustomer = await customerInterface.create(req.body);
@@ -47,17 +49,17 @@ router.post('/customer', async (req, res, next) => {
   }
 });
 
-//-------demo--------
+
 router.put('/customer/:id', async (req, res, next) => {
   try {
-    const result = await CustomerModel.update(req.body, {where: {id: req.params.id}});
+    // const updatedCustomer = await customerInterface.update(req.body, req,params.id);
+    const result = await customerInterface.update(req.body, req.params.id);
     // if I want to return modified data, do a get ONE here and send it to client
     res.status(200).send(result);
   } catch (e) {
     next(e);
   }
 });
-
 // router.put('/customer/:id', async (req, res, next) => {
 //   try {
 //     const id = req.params.id;
@@ -77,12 +79,10 @@ router.put('/customer/:id', async (req, res, next) => {
 //     next(e);
 //   }
 // });
-
-
 router.delete('/customer/:id', async (req, res, next) => {
   try {
     const id = req.params.id;
-    const customerById = await CustomerModel.destroy({where:{id}});
+    const customerById = await customerInterface.delete(id);
     res.status(200).send(customerById);
   } catch(e) {
     next(e);

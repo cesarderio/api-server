@@ -1,16 +1,12 @@
 'use strict';
 
-const { Next } = require('react-bootstrap/esm/PageItem');
-
 class ModelInterface {
-  constructor(model){
+  constructor(model) {
     this.model = model;
   }
   //create
-  async create(json){
-    // console.log('this is our json', json);
+  async create(json) {
     try {
-      // newCustomer = await CustomerModel.create(req.body);
       let record = await this.model.create(json);
       return record;
     } catch (e) {
@@ -20,14 +16,12 @@ class ModelInterface {
   }
 
   //read
-  async read(id = null){
+  async read(id = null) {
     try {
       let record;
-      if (id){
-        // await CustomerModel.fineOne({where: { id } });
-        record = await this.model.fineOne({where: {id}});
-      }else {
-        // await CustomerModel.findAll();
+      if (id) {
+        record = await this.model.findOne({ where: { id } });
+      } else {
         record = await this.model.findAll();
       }
       return record;
@@ -37,12 +31,25 @@ class ModelInterface {
     }
   }
 
-  //update
-  async update(json, id){
+  //---
+  async readManyToOne(id, model) {
     try {
-      // const result = await CustomerModel.update(req.body, {where: {id}});
-      await this.model.update(json, {where: {id}});
-      let record = await this.model.fineOne({where: {id}});
+      let record = await this.model.findOne({
+        where: { id },
+        include: model,
+      });
+      return record;
+    } catch (e) {
+      console.error('we have a ModelInterface readManyToOne error', e);
+      return e;
+    }
+  }
+
+  //update
+  async update(json, id) {
+    try {
+      await this.model.update(json, { where: { id } });
+      let record = await this.model.findOne({ where: { id } });
       return record;
     } catch (e) {
       console.error('we have a ModelInterface update error', e);
@@ -50,8 +57,15 @@ class ModelInterface {
     }
   }
   //delete
-
-
-
+  async delete(id) {
+    try {
+      await this.model.destroy({ where: { id } });
+      let record = await this.model.findOne({ where: { id } });
+      return record;
+    } catch (e) {
+      console.error('we have a ModelInterface delete error', e);
+      return e;
+    }
+  }
 }
 module.exports = ModelInterface;
